@@ -1,0 +1,76 @@
+{% extends "AppWeb/padre.html" %}
+
+{%load static %}
+
+{% block titulo %}
+    <h1>Foodtruck "Como en Casa"</h1>
+{% endblock %}
+
+{% block subtitulo %}
+    <h2>El lugar donde se encuentran tus ganas de comer, con la comida más rica</h2>
+{% endblock %}
+
+{% block contenido %}
+<!-- Carta Section-->
+        <section class="page-section portfolio" id="portfolio">
+            <div class="container">
+                <!-- Carta Section Heading-->
+                <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">MENÚ</h2>
+                <!-- Icon Divider-->
+                <div class="divider-custom">
+                    <div class="divider-custom-line"></div>
+                    <div class="divider-custom-icon"><i class="fas fa-hamburger"></i></div>
+                    <div class="divider-custom-line"></div>
+                </div>
+                <!-- Carta Grid Items-->
+                <div class="row justify-content-center">
+                    <!-- Carta Item 1-->
+                    <div class="col-md-6 col-lg-4 mb-5">
+                        <a href="/comida/">
+                            <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal1">
+                                <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                                    <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
+                                </div>
+                                <img class="img-fluid" src="{% static 'AppWeb/assets/img/portfolio/comida.png' %}" alt="..." />
+                            </div>
+                        </a>
+                    </div>
+                    <!-- Carta Item 2-->
+                    <div class="col-md-6 col-lg-4 mb-5">
+                        <a href="/bebida/">
+                            <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal2">
+                                <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                                    <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
+                                </div>
+                                <img class="img-fluid" src="{% static 'AppWeb/assets/img/portfolio/bebida.png' %}" alt="..." />
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <!-- Carta Item 3-->
+                    <div class="col-md-6 col-lg-4 mb-5 mb-lg-0">
+                        <a href="/guarnicion/">
+                            <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal3">
+                                <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                                    <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
+                                </div>
+                                <img class="img-fluid" src="{% static 'AppWeb/assets/img/portfolio/guarnicion.png' %}" alt="..." />
+                            </div>
+                        </a>
+                    </div>
+                    <!-- Carta Item 4-->
+                    <div class="col-md-6 col-lg-4 mb-5">
+                        <a href="/postre/">
+                            <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal4">
+                                <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                                    <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
+                                </div>
+                                <img class="img-fluid" src="{% static 'AppWeb/assets/img/portfolio/postre.png' %}" alt="..." />
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+{% endblock %}

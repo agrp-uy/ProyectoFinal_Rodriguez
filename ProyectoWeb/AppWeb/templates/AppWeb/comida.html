@@ -1,0 +1,35 @@
+{% extends "AppWeb/padre.html" %}
+
+{%load static %}
+
+{% block titulo %}
+    <h1>Foodtruck "Como en Casa"</h1>
+{% endblock %}
+
+{% block subtitulo %}
+    <h2>El lugar donde se encuentran tus ganas de comer, con la comida más rica</h2>
+{% endblock %}
+
+{% block contenido %}
+    <br>
+    <br>
+    <div class="text-center mt-4">
+        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Aquí podrás encontrar todas las opciones de comidas que tenemos para ti</h2>
+    </div>
+    <br>
+    <hr>
+    <div class="text-center text-dark">
+    {% for comida in object_list %}
+        <p>{{ comida.nombre }} .......... {{ comida.descripcion }} .......... ${{ comida.precio }}</p>
+        <hr>
+    {% endfor %}
+    </div>
+    <br>
+    <div class="d-flex justify-content-center">
+        <a href="/agregarComida/" class="btn btn-primary btn-xl" id="submitButton" style="margin-right: 20px">Agregar Comida</a>
+        <a href="/buscarComida/" class="btn btn-primary btn-xl" id="submitButton">Buscar Comida</a>
+    </div>
+    <br>
+    <br>
+
+{% endblock %}

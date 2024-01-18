@@ -1,0 +1,32 @@
+{% extends "AppWeb/padre.html" %}
+
+{%load static %}
+
+{% block titulo %}
+    <h1>Foodtruck "Como en Casa"</h1>
+{% endblock %}
+
+{% block subtitulo %}
+    <h2>El lugar donde se encuentran tus ganas de comer, con la comida más rica</h2>
+{% endblock %}
+
+{% block contenido %}
+    <br>
+    <br>
+    <div class="text-center mt-4">
+        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Agreguemos la opción de guarnición que prefieres</h2>
+    </div>
+    <br>
+    <br>
+    <div class="text-center text-success">
+        <form action="{% url 'agregarGuarnicion' %}" method="POST"> {% csrf_token %}
+
+        {{form.as_p}}
+
+        <input type="submit" value="Guardar" class="btn btn-primary">
+    </form>
+    </div>
+    <br>
+    <br>
+
+{% endblock %}

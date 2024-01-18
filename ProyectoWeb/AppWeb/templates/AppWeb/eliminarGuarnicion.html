@@ -1,0 +1,37 @@
+{% extends "AppWeb/padre.html" %}
+
+{%load static %}
+
+{% block titulo %}
+    <h1>Foodtruck "Como en Casa"</h1>
+{% endblock %}
+
+{% block subtitulo %}
+    <h2>El lugar donde se encuentran tus ganas de comer, con la comida más rica</h2>
+{% endblock %}
+
+{% block contenido %}
+<div class="text-center d-flex flex-column align-items-center">
+    <br>
+    <br>
+    <br>
+    <h1>
+        <p>Estás a punto de borrar</p>
+        <p><span style="color: #1abc9c;">{{ object.nombre }}</span>.</p>
+        <br>
+    </h1>
+    <h2>
+        <p>¿Estás seguro de que deseas eliminarlo?</p>
+    </h2>
+    <br>
+    <div class="d-flex justify-content-center">
+        <a href="{% url 'guarnicion' %}" class="btn btn-secondary" style="margin-right: 20px">Volver</a>
+        <form action="" method="POST">
+            {% csrf_token %}
+            <input type="submit" value="Confirmar" class="btn btn-danger">
+        </form>
+    </div>
+    <br>
+    <br>
+</div>
+{% endblock %}
