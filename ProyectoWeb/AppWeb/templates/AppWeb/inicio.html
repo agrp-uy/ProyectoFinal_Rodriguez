@@ -2,16 +2,38 @@
 
 {%load static %}
 
-{% block titulo %}
-    <h1>Foodtruck "Como en Casa"</h1>
-{% endblock %}
-
-{% block subtitulo %}
-    <h2>El lugar donde se encuentran tus ganas de comer, con la comida más rica</h2>
-{% endblock %}
 
 {% block contenido %}
 
+        <!-- Masthead-->
+        <header class="masthead bg-primary text-white text-center">
+            <div class="container d-flex align-items-center flex-column">
+                <!-- Masthead Avatar Image-->
+                <img class="masthead-avatar mb-5" src="{% static 'AppWeb/assets/img/foodtruck.webp' %}" alt="..." />
+                <!-- Masthead Heading-->
+                <h1 class="masthead-heading text-uppercase mb-0">
+
+                    <h1>Foodtruck "Como en Casa"</h1>
+
+                </h1>
+                <!-- Icon Divider-->
+                <div class="divider-custom divider-light">
+                    <div class="divider-custom-line"></div>
+                    <div class="divider-custom-icon"><i class="fas fa-hamburger"></i></div>
+                    <div class="divider-custom-line"></div>
+                </div>
+                <!-- Masthead Subheading-->
+                <p class="masthead-subheading font-weight-light mb-0">
+                    
+                    <h2>El lugar donde se encuentran tus ganas de comer, con la comida más rica</h2>
+                    <br>
+                    <br>
+                    <h1 class="page-section-heading text-center text-uppercase text-secondary mb-0">{{mensaje}}</h1>
+
+                </p>
+            </div>
+        </header>
+   
         <!-- About Section-->
         <section class="page-section bg-primary text-white mb-0" id="about">
             <div class="container">

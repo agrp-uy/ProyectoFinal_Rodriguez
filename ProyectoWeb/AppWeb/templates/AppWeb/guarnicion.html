@@ -2,15 +2,11 @@
 
 {%load static %}
 
-{% block titulo %}
-    <h1>Foodtruck "Como en Casa"</h1>
-{% endblock %}
-
-{% block subtitulo %}
-    <h2>El lugar donde se encuentran tus ganas de comer, con la comida más rica</h2>
-{% endblock %}
-
 {% block contenido %}
+    <br>
+    <br>
+    <br>
+    <br>
     <br>
     <br>
     <div class="text-center mt-4">
@@ -26,7 +22,9 @@
     </div>
     <br>
     <div class="d-flex justify-content-center">
+        {% if user.is_staff %}
         <a href="/agregarGuarnicion/" class="btn btn-primary btn-xl" id="submitButton" style="margin-right: 10px">Agregar Guarnición</a>
+        {% endif %}
         <a href="/buscarGuarnicion/" class="btn btn-primary btn-xl" id="submitButton">Buscar Guarnición</a>
     </div>
     <br>

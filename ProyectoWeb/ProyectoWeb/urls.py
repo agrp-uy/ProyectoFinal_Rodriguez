@@ -69,8 +69,13 @@ urlpatterns = [
     path('resultadosPostre/', resultadosPostre, name='Resultados Postre'),
 
     #URLs para manejo de usuarios
-    path('login/', login, name='Login'),
-    path('signup/', signup, name='Signup'),
+    path('login/', user_login, name='Login'),
+    path('signup/', user_signup, name='Signup'),
+    path('logout/', user_logout, name='Logout'),
+    path('editarPerfil/', editar_perfil, name='Editar Perfil'),
+
+    #URLs varias
+    path('accesoDenegado/', acceso_denegado, name='accesoDenegado'),
     
 
 ]

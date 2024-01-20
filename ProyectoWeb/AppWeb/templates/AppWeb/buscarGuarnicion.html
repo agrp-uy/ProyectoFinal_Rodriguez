@@ -2,15 +2,13 @@
 
 {%load static %}
 
-{% block titulo %}
-    <h1>Foodtruck "Como en Casa"</h1>
-{% endblock %}
-
-{% block subtitulo %}
-    <h2>El lugar donde se encuentran tus ganas de comer, con la comida más rica</h2>
-{% endblock %}
-
 {% block contenido %}
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
     <div class="text-center mt-4">
         <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Te ayudamos a buscar tu Guarnición preferida</h2>
     </div>
@@ -30,7 +28,7 @@
     <hr>
 
         {% for x in guarniciones_b %}
-            <p>{{ x.nombre }} .......... {{ x.descripcion }} .......... ${{ x.precio }} .......... <a href="{% url 'actualizarGuarnicion' x.id %}">Actualizar</a> .......... <a href="{% url 'eliminarGuarnicion' x.id %}" class="eliminar-link">Eliminar</a></p>
+            <p>{{ x.nombre }} .......... {{ x.descripcion }} .......... ${{ x.precio }} {% if user.is_staff %}.......... <a href="{% url 'actualizarGuarnicion' x.id %}">Actualizar</a> .......... <a href="{% url 'eliminarGuarnicion' x.id %}" class="eliminar-link">Eliminar</a> {% endif %} </p>
             <hr>
         {% endfor %}
     </div>

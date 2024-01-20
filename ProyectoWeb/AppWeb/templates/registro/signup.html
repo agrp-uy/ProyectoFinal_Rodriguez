@@ -1,0 +1,22 @@
+{% extends "AppWeb/padre.html" %}
+
+{%load static %}
+
+{% block contenido %}
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="text-center mt-4">
+  <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Registrate para ver todo el contenido de nuestro sitio</h2>
+</div>
+<br>
+<div class="d-flex justify-content-center vh-100">
+    <form action="" method="POST" style="text-align: center">{% csrf_token %}
+        {{ formu.as_p}}
+        <button type="submit" class="btn btn-primary">Registrarse</button>
+    </form>
+</div>
+{% endblock %}

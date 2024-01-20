@@ -1,52 +1,69 @@
-from django.shortcuts import render
 from django.http import HttpResponse
 from AppWeb.models import *
 from AppWeb.forms import *
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView, TemplateView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
-from AppWeb.models import Comida, Bebida, Guarnicion, Postre
-from AppWeb.forms import ComidaForm, BebidaForm, GuarnicionForm, PostreForm
+from django.contrib import messages
+from django.shortcuts import redirect, render
+from django.urls import reverse
+from django.contrib.auth.decorators import user_passes_test
+from django.utils.decorators import method_decorator
+
+
 
 
 
 # Create your views here.
 
+#Vistas varias:
+
+def es_staff(user):
+    return user.is_staff
+
+def acceso_denegado(request):
+    return render(request, "registro/accesoDenegado.html", {'mensaje': 'No cuenta con los privilegios para realizar esa acción'})
+
+#Vistas generales:
 
 class InicioView(TemplateView):
     template_name = "AppWeb/inicio.html"
 
-class CartaView(TemplateView):
+class CartaView(LoginRequiredMixin, TemplateView):
     template_name = "AppWeb/carta.html"
 
-class PedidoView(TemplateView):
+class PedidoView(LoginRequiredMixin, TemplateView):
     template_name = "AppWeb/pedido.html"
 
 #vistas para crear nuevos objetos (C)
-#@login_required #Bloquear acceso a usuarios no registrados
-    
-class AgregarComida(CreateView):
+
+@method_decorator(user_passes_test(es_staff, login_url='accesoDenegado'), name='dispatch')  
+class AgregarComida(LoginRequiredMixin, CreateView):
     model = Comida
     form_class = ComidaForm
     template_name = "AppWeb/agregarComida.html"
     success_url = reverse_lazy('inicio')
 
-class AgregarBebida(CreateView):
+@method_decorator(user_passes_test(es_staff, login_url='accesoDenegado'), name='dispatch')  
+class AgregarBebida(LoginRequiredMixin, CreateView):
     model = Bebida
     form_class = BebidaForm
     template_name = "AppWeb/agregarBebida.html"
     success_url = reverse_lazy('inicio')
 
-class AgregarGuarnicion(CreateView):
+@method_decorator(user_passes_test(es_staff, login_url='accesoDenegado'), name='dispatch')  
+class AgregarGuarnicion(LoginRequiredMixin, CreateView):
     model = Guarnicion
     form_class = GuarnicionForm
     template_name = "AppWeb/agregarGuarnicion.html"
     success_url = reverse_lazy('inicio')
 
-class AgregarPostre(CreateView):
+@method_decorator(user_passes_test(es_staff, login_url='accesoDenegado'), name='dispatch')  
+class AgregarPostre(LoginRequiredMixin, CreateView):
     model = Postre
     form_class = PostreForm
     template_name = "AppWeb/agregarPostre.html"
@@ -55,25 +72,25 @@ class AgregarPostre(CreateView):
 
 #Vistas para leer los modelos creados (R)
 
-class ComidaView(ListView):
+class ComidaView(LoginRequiredMixin, ListView):
     model = Comida
     template_name = "AppWeb/comida.html"
     context_object_name = 'comidas'
     ordering = ['nombre']
 
-class BebidaView(ListView):
+class BebidaView(LoginRequiredMixin, ListView):
     model = Bebida
     template_name = "AppWeb/bebida.html"
     context_object_name = 'bebidas'
     ordering = ['nombre']
 
-class GuarnicionView(ListView):
+class GuarnicionView(LoginRequiredMixin, ListView):
     model = Guarnicion
     template_name = "AppWeb/guarnicion.html"
     context_object_name = 'guarniciones'
     ordering = ['nombre']
 
-class PostreView(ListView):
+class PostreView(LoginRequiredMixin, ListView):
     model = Postre
     template_name = "AppWeb/postre.html"
     context_object_name = 'postres'
@@ -82,26 +99,29 @@ class PostreView(ListView):
 
 #Vistas para editar los modelos creados (U)
 
-
-class ActualizarComida(UpdateView):
+@method_decorator(user_passes_test(es_staff, login_url='accesoDenegado'), name='dispatch')  
+class ActualizarComida(LoginRequiredMixin, UpdateView):
     model = Comida
     form_class = ComidaForm
     template_name = 'AppWeb/actualizarComida.html'
     success_url = '/comida/'
 
-class ActualizarBebida(UpdateView):
+@method_decorator(user_passes_test(es_staff, login_url='accesoDenegado'), name='dispatch')  
+class ActualizarBebida(LoginRequiredMixin, UpdateView):
     model = Bebida
     form_class = BebidaForm
     template_name = 'AppWeb/actualizarBebida.html'
     success_url = '/bebida/'
 
-class ActualizarGuarnicion(UpdateView):
+@method_decorator(user_passes_test(es_staff, login_url='accesoDenegado'), name='dispatch')  
+class ActualizarGuarnicion(LoginRequiredMixin, UpdateView):
     model = Guarnicion
     form_class = GuarnicionForm
     template_name = 'AppWeb/actualizarGuarnicion.html'
     success_url = '/guarnicion/'
 
-class ActualizarPostre(UpdateView):
+@method_decorator(user_passes_test(es_staff, login_url='accesoDenegado'), name='dispatch')  
+class ActualizarPostre(LoginRequiredMixin, UpdateView):
     model = Postre
     form_class = PostreForm
     template_name = 'AppWeb/actualizarPostre.html'
@@ -109,31 +129,37 @@ class ActualizarPostre(UpdateView):
 
 #Vistas para eliminar los modelos creados (D)
 
-class EliminarComida(DeleteView):
+@method_decorator(user_passes_test(es_staff, login_url='accesoDenegado'), name='dispatch')  
+class EliminarComida(LoginRequiredMixin, DeleteView):
     model = Comida
     template_name = 'AppWeb/eliminarComida.html'
     success_url = '/comida/'
 
-class EliminarBebida(DeleteView):
+@method_decorator(user_passes_test(es_staff, login_url='accesoDenegado'), name='dispatch')  
+class EliminarBebida(LoginRequiredMixin, DeleteView):
     model = Bebida
     template_name = 'AppWeb/eliminarBebida.html'
     success_url = '/bebida/'
 
-class EliminarGuarnicion(DeleteView):
+@method_decorator(user_passes_test(es_staff, login_url='accesoDenegado'), name='dispatch')  
+class EliminarGuarnicion(LoginRequiredMixin, DeleteView):
     model = Guarnicion
     template_name = 'AppWeb/eliminarGuarnicion.html'
     success_url = '/guarnicion/'
 
-class EliminarPostre(DeleteView):
+@method_decorator(user_passes_test(es_staff, login_url='accesoDenegado'), name='dispatch')  
+class EliminarPostre(LoginRequiredMixin, DeleteView):
     model = Postre
     template_name = 'AppWeb/eliminarPostre.html'
     success_url = '/postre/'
 
 #Vistas para los formularios de busqueda:
 
+@login_required
 def buscarComida(request):
     return render(request, "AppWeb/buscarComida.html")
 
+@login_required
 def resultadosComida(request):
     if request.method == 'GET':
         comida_buscada = request.GET['nombre']
@@ -141,9 +167,11 @@ def resultadosComida(request):
         
     return render(request, "AppWeb/buscarComida.html", {'comidas_b':resultados_comida})
 
+@login_required
 def buscarBebida(request):
     return render(request, "AppWeb/buscarBebida.html")
 
+@login_required
 def resultadosBebida(request):
     if request.method == 'GET':
         bebida_buscada = request.GET['nombre']
@@ -151,9 +179,11 @@ def resultadosBebida(request):
         
     return render(request, "AppWeb/buscarBebida.html", {'bebidas_b':resultados_bebida})
 
+@login_required
 def buscarGuarnicion(request):
     return render(request, "AppWeb/buscarGuarnicion.html")
 
+@login_required
 def resultadosGuarnicion(request):
     if request.method == 'GET':
         guarnicion_buscada = request.GET['nombre']
@@ -161,9 +191,11 @@ def resultadosGuarnicion(request):
         
     return render(request, "AppWeb/buscarGuarnicion.html", {'guarniciones_b':resultados_guarnicion})
 
+@login_required
 def buscarPostre(request):
     return render(request, "AppWeb/buscarPostre.html")
 
+@login_required
 def resultadosPostre(request):
     if request.method == 'GET':
         postre_buscado = request.GET['nombre']
@@ -171,9 +203,9 @@ def resultadosPostre(request):
         
     return render(request, "AppWeb/buscarPostre.html", {'postres_b':resultados_postre})
 
-#Vistas para register, login, logout:
+#Vistas para manejo de usuarios:
 
-def login(request):
+def user_login(request):
 
     if request.method == 'POST':
 
@@ -187,29 +219,55 @@ def login(request):
             
             if usuario_actual is not None:
                 login(request, usuario_actual)
-                return render(request, "AppWeb/inicio.html", {'mensaje':f'Bienvenido, {usuario_actual}'})
+                return render(request, "AppWeb/inicio.html", {'mensaje':f'Bienvenido, {usuario_actual.first_name}'})
         else:
             return render(request, "registro/login.html", {'mensaje':"Error, datos incorrectos."})
     else:
         formu = AuthenticationForm()
     return render(request, "registro/login.html", {'formu':formu})
 
-def signup(request):
 
+def user_signup(request):
     if request.method == 'POST':
-
         formu = RegistrarUsuario(request.POST)
-
         if formu.is_valid():
-            usuario = formu.save()
-            login(request, usuario)
-            return render(request, "AppWeb/inicio.html", {'mensaje':f'Bienvenido, {usuario}'})
-        else:
-            return render(request, "registro/signup.html", {'mensaje':"Error, datos incorrectos."})
+            user = formu.save()
+            login(request, user)
+            return render(request, "AppWeb/inicio.html", {'mensaje':f'Bienvenido, {user.first_name}'})
     else:
         formu = RegistrarUsuario()
     return render(request, "registro/signup.html", {'formu':formu})
 
-def logout(request):
+
+def editar_perfil(request):
+    usuario = request.user
+    if request.method == 'POST':
+        formu = FormularioEditar(request.POST)
+        if formu.is_valid():
+            info = formu.cleaned_data
+            usuario.set_password(info['password1'])
+            usuario.first_name = info['first_name']
+            usuario.last_name = info['last_name']
+            usuario.direccion = info['direccion']
+            usuario.telefono = info['telefono']
+            usuario.email = info['email']
+            usuario.save()
+        
+            return render(request, "AppWeb/inicio.html", {'mensaje':f'Usuario actualizado, {usuario.first_name}'})
+    else:
+        formu = FormularioEditar(
+            initial={
+                'first_name': usuario.first_name,
+                'last_name': usuario.last_name,
+                'direccion': usuario.direccion,
+                'telefono': usuario.telefono,
+                'email': usuario.email,
+            })
+    return render(request, "registro/editarPerfil.html", {'formu':formu})
+
+
+
+def user_logout(request):
     logout(request)
-    return render(request, "AppWeb/inicio.html", {'mensaje':"Sesión cerrada."})
+    return render(request, "registro/logout.html", {'mensaje':"Sesión cerrada."})
+
