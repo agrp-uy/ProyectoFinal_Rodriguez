@@ -12,6 +12,16 @@
     <br>
     <br>
     <div class="text-center mt-4">
+        {% with user.avatar_set.last as miAvatar %}
+        {% if miAvatar %}
+            <img src="{{ miAvatar.imagen.url }}" style="display: block; margin: auto; max-width: 300px;">
+        {% endif %}
+        {% endwith %}
+        <br>
+        <div style="display: flex; justify-content: center;">
+            <a href="{% url 'Agregar Avatar' %}" class="btn btn-primary">Editar Avatar</a>
+        </div>
+        <br>
         <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Actualicemos los datos de tu perfil</h2>
     </div>
     <br>

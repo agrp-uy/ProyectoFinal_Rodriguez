@@ -43,7 +43,7 @@
                         {% if user.is_authenticated %}
                         <li class="nav-item mx-0 mx-lg-1 d-flex align-items-center justify-content-center">
                             <div class="nav-link py-3 px-0 px-lg-3 rounded text-white">
-                                {% with user.avatar_set.first as miAvatar %}
+                                {% with user.avatar_set.last as miAvatar %}
                                     {% if miAvatar %}
                                         <img src="{{ miAvatar.imagen.url }}" style="width: 50px; border-radius: 50%; object-fit: cover; object-position: center; margin-right: 10px">
                                     {% else %}
@@ -78,7 +78,7 @@
             <div class="container">
                 <div class="row">
                     <!-- Footer Location-->
-                    <div class="col-lg-6 mb-5 mb-lg-0">
+                    <div class="col-lg-4">
                         <h4 class="text-uppercase mb-4">Ubicación</h4>
                         <p class="lead mb-0">
                             Calle Principal 123
@@ -87,11 +87,17 @@
                         </p>
                     </div>
                     <!-- Footer Social Icons-->
-                    <div class="col-lg-6">
+                    <div class="col-lg-4">
                         <h4 class="text-uppercase mb-4">Nuestras Redes</h4>
                         <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-facebook-f"></i></a>
                         <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-instagram"></i></a>
                         <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fas fa-fw fa-motorcycle"></i></a>
+                    </div>
+                    <!-- Footer About Text-->
+                    <div class="col-lg-4">
+                        <h4 class="text-uppercase mb-4">Desarrollado por Alejandro Rodriguez</h4>
+                        <p class="lead mb-0">
+                        <a href="http://startbootstrap.com">Sobre Alejandro</a>
                     </div>
                 </div>
             </div>

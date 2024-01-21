@@ -15,14 +15,11 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path
 from AppWeb.views import *
 from django.conf import settings
 from django.conf.urls.static import static
 
-    
-    
-     
     
 
 urlpatterns = [
@@ -59,20 +56,25 @@ urlpatterns = [
     path('eliminarPostre/<int:pk>/', EliminarPostre.as_view(), name='eliminarPostre'),
 
     #URLs para buscar elementos
-    path('buscarComida/', buscarComida, name='Buscar Comida'),
-    path('resultadosComida/', resultadosComida, name='Resultados Comida'),
+    path('buscarComida/', buscarComida, name='Buscar Comida'), 
     path('buscarBebida/', buscarBebida, name='Buscar Bebida'),
-    path('resultadosBebida/', resultadosBebida, name='Resultados Bebida'),
     path('buscarGuarnicion/', buscarGuarnicion, name='Buscar Guarnicion'),
-    path('resultadosGuarnicion/', resultadosGuarnicion, name='Resultados Guarnicion'),
     path('buscarPostre/', buscarPostre, name='Buscar Postre'),
+
+    #URLs para resultados de busqueda:
+    path('resultadosComida/', resultadosComida, name='Resultados Comida'),
+    path('resultadosBebida/', resultadosBebida, name='Resultados Bebida'),
+    path('resultadosGuarnicion/', resultadosGuarnicion, name='Resultados Guarnicion'),
     path('resultadosPostre/', resultadosPostre, name='Resultados Postre'),
 
     #URLs para manejo de usuarios
     path('login/', user_login, name='Login'),
     path('signup/', user_signup, name='Signup'),
     path('logout/', user_logout, name='Logout'),
+
+    #URLs para manejo de perfiles
     path('editarPerfil/', editar_perfil, name='Editar Perfil'),
+    path('agregarAvatar/', agregar_avatar, name='Agregar Avatar'),
 
     #URLs varias
     path('accesoDenegado/', acceso_denegado, name='accesoDenegado'),
