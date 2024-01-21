@@ -76,6 +76,7 @@ urlpatterns = [
 
     #URLs varias
     path('accesoDenegado/', acceso_denegado, name='accesoDenegado'),
+    path('enConstruccion/', en_construccion, name='enConstruccion'),
     
 
 ]

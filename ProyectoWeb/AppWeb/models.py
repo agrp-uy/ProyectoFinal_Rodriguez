@@ -31,7 +31,7 @@ class Postre(models.Model):
     def __str__(self):
         return self.nombre
 
-class AvatarImage(models.Model):
+class Avatar(models.Model):
     usuario = models.ForeignKey(User, on_delete=models.CASCADE)
     imagen = models.ImageField(upload_to='avatars', null=True, blank=True)
     

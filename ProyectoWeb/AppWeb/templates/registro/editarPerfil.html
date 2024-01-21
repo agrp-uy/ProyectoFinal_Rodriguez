@@ -19,7 +19,8 @@
     <div class="text-center text-success">
     <form method="POST">
         {% csrf_token %}
-        {{ form.as_p }}
+        <p>El ingreso de la contraseña es obligatorio. Podes mantener la misma que ya tenías o cambiarla por una nueva.</p>
+        {{ formu.as_p }}
         <button type="submit" class="btn btn-primary">Actualizar Datos</button>
     </form>
     </div>

@@ -29,19 +29,31 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/inicio">Inicio</a></li>
+                        <li class="nav-item mx-0 mx-lg-1 d-flex align-items-center">
+                            <a class="nav-link py-3 px-0 px-lg-3 rounded" href="/inicio">Inicio</a>
+                        </li>
                         {% if user.is_authenticated %}
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/carta">Carta</a></li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/pedido">Hacé tu Pedido</a></li>
+                        <li class="nav-item mx-0 mx-lg-1 d-flex align-items-center">
+                            <a class="nav-link py-3 px-0 px-lg-3 rounded" href="/carta">Carta</a>
+                        </li>
+                        <li class="nav-item mx-0 mx-lg-1 d-flex align-items-center">
+                            <a class="nav-link py-3 px-0 px-lg-3 rounded" href="/pedido">Hacé tu Pedido</a>
+                        </li>
                         {% endif %}
                         {% if user.is_authenticated %}
-                        <li class="nav-item mx-0 mx-lg-1">
-                            <li class="nav-item mx-0 mx-lg-1">
-                                <div class="nav-link py-3 px-0 px-lg-3 rounded text-white">
-                                    Hola, <a href="/editarPerfil">{{ user.username }}</a>
-                                </div>
-                            </li>
-                        <li class="nav-item mx-0 mx-lg-1">
+                        <li class="nav-item mx-0 mx-lg-1 d-flex align-items-center justify-content-center">
+                            <div class="nav-link py-3 px-0 px-lg-3 rounded text-white">
+                                {% with user.avatar_set.first as miAvatar %}
+                                    {% if miAvatar %}
+                                        <img src="{{ miAvatar.imagen.url }}" style="width: 50px; border-radius: 50%; object-fit: cover; object-position: center; margin-right: 10px">
+                                    {% else %}
+                                        <img src="{% static 'AppWeb/assets/img/avatar.png' %}" style="width: 50px; border-radius: 50%; object-fit: cover; object-position: center; margin-right: 10px">
+                                    {% endif %}
+                                {% endwith %}
+                                Hola, <a href="/editarPerfil">{{ user.username }}</a>
+                            </div>
+                        </li>
+                        <li class="nav-item mx-0 mx-lg-1 d-flex align-items-center justify-content-center">
                             <button class="btn btn-primary" onclick="location.href='/logout'">Cerrar Sesión</button>
                         </li>
                         {% else %}

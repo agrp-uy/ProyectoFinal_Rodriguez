@@ -26,21 +26,17 @@ class PostreForm(forms.ModelForm):
 class RegistrarUsuario(UserCreationForm):
     password1 = forms.CharField(label='Contraseña', widget=forms.PasswordInput)
     password2 = forms.CharField(label='Confirmar contraseña', widget=forms.PasswordInput)
-    direccion = forms.CharField(label='Direccion', max_length=100)
-    telefono = forms.IntegerField(label='Telefono')
     email = forms.EmailField(label='Email', max_length=50)
 
     class Meta:
         model = User
-        fields = ['username', 'password1', 'password2', "first_name", "last_name", 'direccion', 'telefono', 'email']
+        fields = ['username', 'password1', 'password2', "first_name", "last_name", 'email']
 
 class FormularioEditar(UserCreationForm):
     password1 = forms.CharField(label='Contraseña', widget=forms.PasswordInput)
     password2 = forms.CharField(label='Confirmar contraseña', widget=forms.PasswordInput)
-    direccion = forms.CharField(label='Direccion', max_length=100)
-    telefono = forms.IntegerField(label='Telefono')
     email = forms.EmailField(label='Email', max_length=50)
 
     class Meta:
         model = User
-        fields = ['password1', 'password2', "first_name", "last_name", 'direccion', 'telefono', 'email']
+        fields = ['password1', 'password2', "first_name", "last_name", 'email']

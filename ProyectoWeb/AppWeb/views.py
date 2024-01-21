@@ -28,6 +28,9 @@ def es_staff(user):
 def acceso_denegado(request):
     return render(request, "registro/accesoDenegado.html", {'mensaje': 'No cuenta con los privilegios para realizar esa acción'})
 
+def en_construccion(request):
+    return render(request, 'AppWeb/enConstruccion.html')
+
 #Vistas generales:
 
 class InicioView(TemplateView):
@@ -206,9 +209,7 @@ def resultadosPostre(request):
 #Vistas para manejo de usuarios:
 
 def user_login(request):
-
     if request.method == 'POST':
-
         formu = AuthenticationForm(request, data=request.POST)
 
         if formu.is_valid():
@@ -220,8 +221,10 @@ def user_login(request):
             if usuario_actual is not None:
                 login(request, usuario_actual)
                 return render(request, "AppWeb/inicio.html", {'mensaje':f'Bienvenido, {usuario_actual.first_name}'})
+            else:
+                return render(request, "registro/login.html", {'formu': formu, 'mensaje':"Error, datos incorrectos."})
         else:
-            return render(request, "registro/login.html", {'mensaje':"Error, datos incorrectos."})
+            return render(request, "registro/login.html", {'formu': formu, 'mensaje':"Error, datos incorrectos."})
     else:
         formu = AuthenticationForm()
     return render(request, "registro/login.html", {'formu':formu})
@@ -248,19 +251,19 @@ def editar_perfil(request):
             usuario.set_password(info['password1'])
             usuario.first_name = info['first_name']
             usuario.last_name = info['last_name']
-            usuario.direccion = info['direccion']
-            usuario.telefono = info['telefono']
             usuario.email = info['email']
             usuario.save()
+            # Vuelve a autenticar al usuario después de cambiar la contraseña
+            user = authenticate(username=usuario.username, password=info['password1'])
+            if user is not None:
+                login(request, user)
         
-            return render(request, "AppWeb/inicio.html", {'mensaje':f'Usuario actualizado, {usuario.first_name}'})
+            return render(request, "AppWeb/inicio.html", {'mensaje':f'Se actualizaron tus datos, {usuario.first_name}'})
     else:
         formu = FormularioEditar(
             initial={
                 'first_name': usuario.first_name,
                 'last_name': usuario.last_name,
-                'direccion': usuario.direccion,
-                'telefono': usuario.telefono,
                 'email': usuario.email,
             })
     return render(request, "registro/editarPerfil.html", {'formu':formu})
