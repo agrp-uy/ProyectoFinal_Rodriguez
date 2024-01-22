@@ -65,14 +65,14 @@ def user_logout(request):
 
 #Vistas varias:
 
-def es_staff(user):
+def es_staff(user): #Función para validar al usuario como staff
     return user.is_staff
 
-def acceso_denegado(request):
-    return render(request, "registro/accesoDenegado.html", {'mensaje': 'No cuenta con los privilegios para realizar esa acción'})
+def acceso_denegado(request): #Vista para cuando el usuario no tiene permisos de staff
+    return render(request, "AppWeb/errores/accesoDenegado.html", {'mensaje': 'No cuenta con los privilegios para realizar esa acción'})
 
-def en_construccion(request):
-    return render(request, 'AppWeb/enConstruccion.html')
+def en_construccion(request): #Vista para las secciones que aún no están listas
+    return render(request, 'AppWeb/errores/enConstruccion.html')
 
 
 #vistas para crear objetos de cada modelo (C)
@@ -211,6 +211,7 @@ def buscarPostre(request):
 
 
 #Vistas para los resultados de busqueda:
+#Se aplica filtro para buscar por nombre (o letras) y el resultado se ordena alfabeticamente
 
 @login_required
 def resultadosComida(request):
@@ -259,7 +260,7 @@ def editar_perfil(request):
             usuario.last_name = info['last_name']
             usuario.email = info['email']
             usuario.save()
-            user = authenticate(username=usuario.username, password=info['password1'])
+            user = authenticate(username=usuario.username, password=info['password1']) #Se aplica el authenticate para que el usuario no tenga que volver a iniciar sesión
             if user is not None:
                 login(request, user)
         
