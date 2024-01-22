@@ -25,7 +25,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
 
-    #URLs de la app
+    #URLs generales
     path('', InicioView.as_view(), name='Inicio'),
     path('inicio/', InicioView.as_view(), name='inicio'),
     path('carta/', CartaView.as_view(), name='carta'),
