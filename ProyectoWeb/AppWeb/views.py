@@ -23,6 +23,9 @@ class CartaView(LoginRequiredMixin, TemplateView):
 class PedidoView(LoginRequiredMixin, TemplateView):
     template_name = "AppWeb/pedido.html"
 
+class AboutView(TemplateView):
+    template_name = "AppWeb/about.html"
+
 
 #Vistas para login, logout y signup de usuarios:
 

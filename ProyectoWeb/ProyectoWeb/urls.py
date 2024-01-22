@@ -30,6 +30,7 @@ urlpatterns = [
     path('inicio/', InicioView.as_view(), name='inicio'),
     path('carta/', CartaView.as_view(), name='carta'),
     path('pedido/', PedidoView.as_view(), name='pedido'),
+    path('about/', AboutView.as_view(), name='about'),
 
     #URLs de los modelos creados (R)
     path('comida/', ComidaView.as_view(), name='comida'),

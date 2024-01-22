@@ -8,7 +8,10 @@
         <meta name="author" content="" />
         <title>Como en Casa</title>
         <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="{% static 'AppWeb/assets/hamburguesa.png' %}" />
+        <!-- Favicon para modo light -->
+        <link rel="icon" type="image/png" href="{% static 'AppWeb/assets/favicon_light.png' %}" media="(prefers-color-scheme: light)">
+        <!-- Favicon para modo dark -->
+        <link rel="icon" type="image/png" href="{% static 'AppWeb/assets/favicon_dark.png' %}" media="(prefers-color-scheme: dark)">
         <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
         <!-- Google fonts-->
@@ -22,22 +25,18 @@
         <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
             <div class="container">
                 <img src="{% static 'AppWeb/assets/img/foodtruck.webp' %}" class="ml-3" style="width: 100px; object-fit: cover; object-position: center; margin-right: 20px">
-                <a class="navbar-brand" href="#page-top">Como en Casa</a>
+                <a class="navbar-brand" href="/inicio">Como en Casa</a>
                 <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                    Menu
                     <i class="fas fa-bars"></i>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item mx-0 mx-lg-1 d-flex align-items-center">
-                            <a class="nav-link py-3 px-0 px-lg-3 rounded" href="/inicio">Inicio</a>
-                        </li>
                         {% if user.is_authenticated %}
                         <li class="nav-item mx-0 mx-lg-1 d-flex align-items-center">
-                            <a class="nav-link py-3 px-0 px-lg-3 rounded" href="/carta">Carta</a>
+                            <a class="nav-link py-3 px-0 px-lg-3 rounded" href="/carta" style="font-size: 1.8em;">Carta</a>
                         </li>
                         <li class="nav-item mx-0 mx-lg-1 d-flex align-items-center">
-                            <a class="nav-link py-3 px-0 px-lg-3 rounded" href="/pedido">Hacé tu Pedido</a>
+                            <a class="nav-link py-3 px-0 px-lg-3 rounded" href="/pedido" style="font-size: 1.8em;">Hacé tu Pedido</a>
                         </li>
                         {% endif %}
                         {% if user.is_authenticated %}
@@ -80,6 +79,9 @@
                     <!-- Footer Location-->
                     <div class="col-lg-4">
                         <h4 class="text-uppercase mb-4">Ubicación</h4>
+                        <div class="map">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.289107688864!2d-56.18815968502238!3d-34.90388398037777!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x959f81b31535d89b%3A0x2a6f669a0a3543f4!2sCalle%20Principal%20123%2C%20Rivera%2C%20Uruguay!5e0!3m2!1sen!2s!4v1633022912540!5m2!1sen!2s" width="200" height="100" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                        </div>
                         <p class="lead mb-0">
                             Calle Principal 123
                             <br />
@@ -89,22 +91,20 @@
                     <!-- Footer Social Icons-->
                     <div class="col-lg-4">
                         <h4 class="text-uppercase mb-4">Nuestras Redes</h4>
-                        <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-facebook-f"></i></a>
-                        <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-instagram"></i></a>
-                        <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fas fa-fw fa-motorcycle"></i></a>
+                        <a class="btn btn-outline-light btn-social mx-1" href="{% url 'enConstruccion' %}"><i class="fab fa-fw fa-facebook-f"></i></a>
+                        <a class="btn btn-outline-light btn-social mx-1" href="{% url 'enConstruccion' %}"><i class="fab fa-fw fa-instagram"></i></a>
+                        <a class="btn btn-outline-light btn-social mx-1" href="{% url 'enConstruccion' %}"><i class="fas fa-fw fa-motorcycle"></i></a>
                     </div>
                     <!-- Footer About Text-->
                     <div class="col-lg-4">
-                        <h4 class="text-uppercase mb-4">Desarrollado por Alejandro Rodriguez</h4>
-                        <p class="lead mb-0">
-                        <a href="http://startbootstrap.com">Sobre Alejandro</a>
+                        <h4 class="text-uppercase mb-4">Desarrollado por <a href="/about/">Alejandro Rodriguez</a></h4>
                     </div>
                 </div>
             </div>
         </footer>
         <!-- Copyright Section-->
         <div class="copyright py-4 text-center text-white">
-            <div class="container"><small>Copyright &copy; AGRP 2023</small></div>
+            <div class="container"><small>Copyright &copy; AGRP-UY 2024</small></div>
         </div>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>

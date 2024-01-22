@@ -1,51 +1,50 @@
 {% extends "AppWeb/padre.html" %}
 
-{%load static %}
+{% load static %}
 
 
 {% block contenido %}
 
-        <!-- Masthead-->
+        <!-- Encabezado Inicio-->
         <header class="masthead bg-primary text-white text-center">
             <div class="container d-flex align-items-center flex-column">
-                <!-- Masthead Avatar Image-->
+                <!-- Imagen para el Encabezado-->
                 <img class="masthead-avatar mb-5" src="{% static 'AppWeb/assets/img/foodtruck.webp' %}" alt="..." />
-                <!-- Masthead Heading-->
+                <!-- Título Encabezado-->
                 <h1 class="masthead-heading text-uppercase mb-0">
 
                     <h1>Foodtruck "Como en Casa"</h1>
 
                 </h1>
-                <!-- Icon Divider-->
+                <!-- Divisor con ícono-->
                 <div class="divider-custom divider-light">
                     <div class="divider-custom-line"></div>
                     <div class="divider-custom-icon"><i class="fas fa-hamburger"></i></div>
                     <div class="divider-custom-line"></div>
                 </div>
-                <!-- Masthead Subheading-->
+                <!-- Subtitulo del Encabezado-->
                 <p class="masthead-subheading font-weight-light mb-0">
                     
                     <h2>El lugar donde se encuentran tus ganas de comer, con la comida más rica</h2>
                     <br>
-                    <br>
                     <h1 class="page-section-heading text-center text-uppercase text-secondary mb-0">{{mensaje}}</h1>
-
+                    <br>
+                    <img src="{% static 'AppWeb/assets/burger.gif' %}" alt="Burger" style="margin-bottom: 0;">
                 </p>
             </div>
         </header>
-   
-        <!-- About Section-->
+        <!-- Información del local -->
         <section class="page-section bg-primary text-white mb-0" id="about">
             <div class="container">
-                <!-- About Section Heading-->
+                <!-- Título Información -->
                 <h2 class="page-section-heading text-center text-uppercase text-white">SOBRE NOSOTROS</h2>
-                <!-- Icon Divider-->
+                <!-- Divisor con ícono -->
                 <div class="divider-custom divider-light">
                     <div class="divider-custom-line"></div>
                     <div class="divider-custom-icon"><i class="fas fa-hamburger"></i></div>
                     <div class="divider-custom-line"></div>
                 </div>
-                <!-- About Section Content-->
+                <!-- Contenido Información del local-->
                 <div class="row">
                     <div class="col-lg-4 ms-auto"><p class="lead">El Foodtruck "Como en Casa" comienza a fucionar en el año 2023 con el objetivo de brindarte la comida más rica, siempre en el estilo casero, artesanal</p></div>
                     <div class="col-lg-4 me-auto"><p class="lead">Buscamos brindarte la comida más fresca, preparada en el momento, con los mejores ingredientes disponibles en el mercado, para que tu experiencia al comer sea de disfrute total</p></div>
@@ -54,4 +53,4 @@
         </section>
 
 {% endblock %}
-```
+

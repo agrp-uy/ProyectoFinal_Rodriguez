@@ -1,0 +1,35 @@
+{% extends "AppWeb/padre.html" %}
+
+{% load static %}
+
+{% block contenido %}
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <h1 class="page-section-heading text-center text-uppercase text-secondary mb-0" style="text-decoration: underline;">ACERCA DEL DESARROLLADOR</h1>
+    <br>
+    <h2 class="page-section-heading text-center text-secondary mb-0">Esta web fue desarrollada por Alejandro Rodriguez,</h2>
+    <br>
+    <h2 class="page-section-heading text-center text-secondary mb-0">como Proyecto Final al curso de Python, camada 50195,</h2>
+    <br>
+    <h2 class="page-section-heading text-center text-secondary mb-0">realizado en la academia <img src="{% static 'AppWeb/assets/logo_coderhouse.png' %}" alt="Logo Coderhouse" style="max-height: 50px;"></h2>
+    <br>
+    <div class="divider-custom">
+        <div class="divider-custom-line"></div>
+        <div class="divider-custom-icon"><i class="fas fa-hamburger"></i></div>
+        <div class="divider-custom-line"></div>
+    </div>
+    <br>
+    <h1 class="page-section-heading text-center text-uppercase text-secondary mb-0" style="text-decoration: underline;">MIS REDES SOCIALES</h1>
+    <div class="social-icons" style="text-align: center;">
+        <a href="https://www.instagram.com/algarope" style="font-size: 8em; margin-right: 50px;"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/agrp-uy" style="font-size: 8em; margin-right: 50px;"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/agrp-uy" style="font-size: 8em;"><i class="fab fa-github"></i></a>
+    </div>
+    <br>
+    <br>
+{% endblock %}
