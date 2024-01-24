@@ -1,8 +1,13 @@
 # ProyectoFinal_Rodriguez
- Proyecto Final - Alejandro Rodriguez - Curso: Python, Camada: 50195
 
- Desarrollado en Python 3.11.4, con Django 5.0
+**Proyecto Final - Alejandro Rodriguez - Curso: Python, Camada: 50195**
 
+Desarrollado en Python 3.11.4, con Django 5.0
+
+**El video de presentación es accesible a través de la siguiente URL:** https://youtu.be/jJX8tVmOo-o
+
+**La planilla con los casos de pruebas es accesible a través de la siguiente URL:** https://docs.google.com/spreadsheets/d/168rtbA4q3sZ-7i3muPeBtYhEjUr3SF5kGQPPowT4H-8/edit?usp=sharing
+ 
 La web se accede desde la direccion por defecto del server, la cual ya está configurada para que nos lleve a la página de inicio, sin la necesidad de poner la URL '/inicio'. De todas formas se puede hacer y también es funcional. Si se desea ingresar al panel de admin o a la web con usuario admin para ver todas las funcionalidades, el superusuario es **admin** y la password es **admin123**.
 
 El proyecto es una web para un local de comidas rápidas. En la barra de navegación superior se pueden encontrar 3 links (los 3 funcionales) a **Inicio**, **Carta** y **Hacé tu Pedido**.
@@ -11,9 +16,9 @@ El proyecto es una web para un local de comidas rápidas. En la barra de navegac
 **Carta** nos da acceso a lo que sería la Carta, donde están integrados los 4 modelos a través de 4 botones. Al ingresar a los mismos nos muestra un read de la base de datos con los productos de la categoría seleccionada. Y debajo nos brinda la opción (a través de su respectivo botón) de Agregar, que nos permite agregar productos a la BD. También está la opción de Buscar, que nos permite buscar en la BD por el nombre (o incluso por algunas letras) del producto.
 **Hacé tu Pedido** lleva a un formulario que es funcional, pero que no cumple con la función de Carrito de Compras. El botón nos lleva a una URL en Construcción.
 
-Sin haberse autenticado, las unicas urls accesibles son inicio/, login/ y signup/. Asimismo, hay algunas urls en las que se realiza la validacion definida en la funcion es_staff, bloqueando así el acceso a funcionalidades (C), (U) y (D) del CRUD de los modelos a los usuarios que no sean staff. Si un usuario general intenta acceder directo desde la barra de direcciones a una de estas url, lo redirigirá a otra que le envía un mensaje de error.
+Sin haberse autenticado, las unicas urls accesibles son inicio/, login/ y signup/, así como las urls del footer. Asimismo, hay algunas urls en las que se realiza la validacion definida en la funcion es_staff, bloqueando así el acceso a funcionalidades (C), (U) y (D) del CRUD de los modelos a los usuarios que no sean staff. Si un usuario general intenta acceder directo desde la barra de direcciones a una de estas url, lo redirigirá a otra que le envía un mensaje de error.
 
-En la navbar, además de los tres links mencionados previamente, también aparece el avatar y un saludo al usuario. En el saludo, si se hace clic en el nombre, se accede a la url para editar el perfil. En la página para editar el perfil, también se accede la opción de editar avatar, donde se podrá cargar una nueva imagen.
+En la navbar, además de los links mencionados previamente, también aparece el avatar y un saludo al usuario. En el saludo, si se hace clic en el nombre, se accede a la url para editar el perfil. En la página para editar el perfil, también se accede la opción de editar avatar, donde se podrá cargar una nueva imagen.
 
 Las URL con las que cuenta el proyecto son las siguientes (copio y pego desde urls.py):
 
