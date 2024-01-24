@@ -4,7 +4,7 @@
 
 Desarrollado en Python 3.11.4, con Django 5.0
 
-**El video de presentación es accesible a través de la siguiente URL:** https://youtu.be/jJX8tVmOo-o
+**El video de presentación es accesible a través de la siguiente URL:** https://youtu.be/3JpI2zAk648
 
 **La planilla con los casos de pruebas es accesible a través de la siguiente URL:** https://docs.google.com/spreadsheets/d/168rtbA4q3sZ-7i3muPeBtYhEjUr3SF5kGQPPowT4H-8/edit?usp=sharing
  
