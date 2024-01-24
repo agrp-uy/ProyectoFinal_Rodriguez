@@ -17,7 +17,7 @@ from django.utils.decorators import method_decorator
 class InicioView(TemplateView):
     template_name = "AppWeb/inicio.html"
 
-class CartaView(LoginRequiredMixin, TemplateView):
+class CartaView(TemplateView):
     template_name = "AppWeb/carta.html"
 
 class PedidoView(LoginRequiredMixin, TemplateView):
@@ -41,7 +41,7 @@ def user_login(request):
             
             if usuario_actual is not None:
                 login(request, usuario_actual)
-                return render(request, "AppWeb/inicio.html", {'mensaje':f'Bienvenido, {usuario_actual.first_name}'})
+                return render(request, "AppWeb/inicio.html", {'mensaje':f'Bienvenid@, {usuario_actual.first_name}'})
             else:
                 return render(request, "registro/login.html", {'formu': formu, 'mensaje':"Error, datos incorrectos."})
         else:
@@ -56,7 +56,7 @@ def user_signup(request):
         if formu.is_valid():
             user = formu.save()
             login(request, user)
-            return render(request, "AppWeb/inicio.html", {'mensaje':f'Bienvenido, {user.first_name}'})
+            return render(request, "AppWeb/inicio.html", {'mensaje':f'Bienvenid@, {user.first_name}'})
     else:
         formu = RegistrarUsuario()
     return render(request, "registro/signup.html", {'formu':formu})
@@ -111,25 +111,25 @@ class AgregarPostre(LoginRequiredMixin, CreateView):
 
 #Vistas para leer los objetos de cada modelo (R)
 
-class ComidaView(LoginRequiredMixin, ListView):
+class ComidaView(ListView):
     model = Comida
     template_name = "AppWeb/Comida/comida.html"
     context_object_name = 'comidas'
     ordering = ['nombre']
 
-class BebidaView(LoginRequiredMixin, ListView):
+class BebidaView(ListView):
     model = Bebida
     template_name = "AppWeb/Bebida/bebida.html"
     context_object_name = 'bebidas'
     ordering = ['nombre']
 
-class GuarnicionView(LoginRequiredMixin, ListView):
+class GuarnicionView(ListView):
     model = Guarnicion
     template_name = "AppWeb/Guarnicion/guarnicion.html"
     context_object_name = 'guarniciones'
     ordering = ['nombre']
 
-class PostreView(LoginRequiredMixin, ListView):
+class PostreView(ListView):
     model = Postre
     template_name = "AppWeb/Postre/postre.html"
     context_object_name = 'postres'
