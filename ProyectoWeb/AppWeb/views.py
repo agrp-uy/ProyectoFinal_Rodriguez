@@ -55,7 +55,7 @@ def user_signup(request):
         formu = RegistrarUsuario(request.POST)
         if formu.is_valid():
             user = formu.save()
-            login(request, user)
+            login(request, user) #Se aplica el login para que el usuario ya quede logueado luego del registro exitoso
             return render(request, "AppWeb/inicio.html", {'mensaje':f'Bienvenid@, {user.first_name}'})
     else:
         formu = RegistrarUsuario()
@@ -80,7 +80,7 @@ def en_construccion(request): #Vista para las secciones que aún no están lista
 
 #vistas para crear objetos de cada modelo (C)
 
-@method_decorator(user_passes_test(es_staff, login_url='accesoDenegado'), name='dispatch')  
+@method_decorator(user_passes_test(es_staff, login_url='accesoDenegado'), name='dispatch')  #Con el method_decorator se aplica la validación para que solo el staff pueda acceder a estas vistas
 class AgregarComida(LoginRequiredMixin, CreateView):
     model = Comida
     form_class = ComidaForm

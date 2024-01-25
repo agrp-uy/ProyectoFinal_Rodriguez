@@ -8,9 +8,9 @@
         <meta name="author" content="" />
         <title>Como en Casa</title>
         <!-- Favicon-->
-        <!-- Favicon para modo light -->
+        <!-- Favicon para modo light del OS -->
         <link rel="icon" type="image/png" href="{% static 'AppWeb/assets/favicon_light.png' %}" media="(prefers-color-scheme: light)">
-        <!-- Favicon para modo dark -->
+        <!-- Favicon para modo dark del OS -->
         <link rel="icon" type="image/png" href="{% static 'AppWeb/assets/favicon_dark.png' %}" media="(prefers-color-scheme: dark)">
         <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
@@ -34,15 +34,15 @@
                         <li class="nav-item mx-0 mx-lg-1 d-flex align-items-center justify-content-center">
                             <a class="nav-link py-3 px-0 px-lg-3 rounded" href="/carta" style="font-size: 1.8em;">Carta</a>
                         </li>
-                        {% if user.is_authenticated %}
+                        {% if user.is_authenticated %} <!-- Validación para saber si el usuario ha hecho login --> 
                         <li class="nav-item mx-0 mx-lg-1 d-flex align-items-center justify-content-center">
                             <a class="nav-link py-3 px-0 px-lg-3 rounded" href="/pedido" style="font-size: 1.8em;">Hacé tu Pedido</a>
                         </li>
                         {% endif %}
-                        {% if user.is_authenticated %}
+                        {% if user.is_authenticated %} <!-- Validación para saber si el usuario ha hecho login --> 
                         <li class="nav-item mx-0 mx-lg-1 d-flex align-items-center justify-content-center">
                             <div class="nav-link py-3 px-0 px-lg-3 rounded text-white">
-                                {% with user.avatar_set.last as miAvatar %}
+                                {% with user.avatar_set.last as miAvatar %} <!-- Se llama el último avatar subido por el usuario -->
                                     {% if miAvatar %}
                                         <img src="{{ miAvatar.imagen.url }}" style="width: 50px; border-radius: 50%; object-fit: cover; object-position: center; margin-right: 10px">
                                     {% else %}
@@ -84,7 +84,7 @@
                         </div>
                         <p class="lead mb-0">
                             Calle Principal 123
-                            <br />
+                            <br>
                             Rivera, Uruguay
                         </p>
                     </div>
